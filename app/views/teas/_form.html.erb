@@ -1,0 +1,32 @@
+<%= form_with(model: tea, local: true) do |form| %>
+  <% if tea.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(tea.errors.count, "error") %> prohibited this tea from being saved:</h2>
+
+      <ul>
+        <% tea.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :flavor %>
+    <%= form.text_field :flavor %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :brand_id %>
+    <%= form.text_field :brand_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
