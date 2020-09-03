@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+
+  root :to => 'teas#homepage'
+
+
   resources :reviews
 
   resources :teas do
