@@ -1,32 +1,45 @@
-<%= form_with(model: tea, local: true) do |form| %>
-  <% if tea.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(tea.errors.count, "error") %> prohibited this tea from being saved:</h2>
+<h1> Create a new tea blend!</h1>
 
+<%= form_for(@tea) do |f|%>
+<% if @tea.errors.any? %>
+     <div id="error_explanation">
+       <h2>
+         <%= pluralize(@tea.errors.count, "error") %>
+         prohibited this tea from being saved:
+     </h2>
+ 
       <ul>
-        <% tea.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
+       <% @tea.errors.full_messages.each do |msg| %>
+         <li><%= msg %></li>
+       <% end %>
       </ul>
-    </div>
-  <% end %>
+     </div>
+ <% end %>
 
-  <div class="field">
-    <%= form.label :flavor %>
-    <%= form.text_field :flavor %>
-  </div>
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
-  </div>
 
-  <div class="field">
-    <%= form.label :brand_id %>
-    <%= form.text_field :brand_id %>
-  </div>
+  <div>
+     <%= f.label :flavor, "Flavor: " %>
+     <%= f.text_field :flavor %>
+ </div>
+ <div>
+   <%= f.label :description, "Description: " %>
+   <%= f.text_field :description %>
+ </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+ <p> Select a Brand that already exists: </p>
+ <div>
+   <%= f.collection_select :brand_id, Brand.all, :id, :title %>
+
+ </div>
+
+<p> Or create a new Brand: <p>
+<div> 
+<%=f.fields_for :brand do |b| %> 
+  <%=b.label :name, "Name: " %>
+  <%= b.text_field :name%>
 <% end %>
+</div>
+<br>
+ <%= f.submit%>
+<% end %>  
