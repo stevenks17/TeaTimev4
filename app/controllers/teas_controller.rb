@@ -1,5 +1,5 @@
 class TeasController < ApplicationController
-  before_action :set_tea, only: [:show, :edit, :update, :destroy]
+  before_action :set_tea, only: [:show, :edit, :update]
 
   # GET /teas
   # GET /teas.json
@@ -15,6 +15,7 @@ class TeasController < ApplicationController
   # GET /teas/new
   def new
     @tea = Tea.new
+    @tea.build_brand
   end
 
   # GET /teas/1/edit
@@ -27,7 +28,8 @@ class TeasController < ApplicationController
     @tea = Tea.new(tea_params)
 
     respond_to do |format|
-      if @tea.save
+      if @tea.valid?
+        @tea.save
         format.html { redirect_to @tea, notice: 'Tea was successfully created.' }
         format.json { render :show, status: :created, location: @tea }
       else
@@ -65,10 +67,12 @@ class TeasController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_tea
       @tea = Tea.find(params[:id])
+              redirect_to tea_path if !@tea
+
     end
 
     # Only allow a list of trusted parameters through.
     def tea_params
-      params.require(:tea).permit(:flavor, :description, :brand_id)
+      params.require(:tea).permit(:flavor, :description, :brand_id, brand_attributes: [:title])
     end
 end
