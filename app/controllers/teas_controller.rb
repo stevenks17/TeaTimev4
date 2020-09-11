@@ -15,6 +15,7 @@ class TeasController < ApplicationController
   # GET /teas/new
   def new
     @tea = Tea.new
+    @tea.build_brand
   end
 
   # GET /teas/1/edit
@@ -24,7 +25,7 @@ class TeasController < ApplicationController
   # POST /teas
   # POST /teas.json
   def create
-    @tea = Tea.new(tea_params)
+    @tea = Tea.create(tea_params)
 
     respond_to do |format|
       if @tea.save
@@ -69,6 +70,6 @@ class TeasController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def tea_params
-      params.require(:tea).permit(:flavor, :description, :brand_id)
+      params.require(:tea).permit(:flavor, :description, :brand_id, brand_attributes: [:title])
     end
 end
