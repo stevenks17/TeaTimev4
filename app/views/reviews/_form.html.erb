@@ -12,8 +12,8 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :rating %>
-    <%= form.number_field :rating %>
+    <%= form.label :tea_id %>
+    <%= form.collection_select :tea_id, Tea.alpha, :id, :flavor_and_brand, include_blank: true %>
   </div>
 
   <div class="field">
@@ -22,14 +22,18 @@
   </div>
 
   <div class="field">
+    <%= form.label :rating %>
+    <%= form.number_field :rating %>
+  </div>
+
+
+
+  <div class="field">
     <%= form.label :content %>
     <%= form.text_area :content %>
   </div>
 
-  <div class="field">
-    <%= form.label :tea_id %>
-    <%= form.text_field :tea_id %>
-  </div>
+
 
   <div class="actions">
     <%= form.submit %>
