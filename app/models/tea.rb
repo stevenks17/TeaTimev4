@@ -11,4 +11,13 @@ class Tea < ApplicationRecord
   def brand_title
     brand.try(:title)
   end
+
+
+  def flavor_and_brand
+    "#{brand.try(:title)} - #{flavor}"
+  end
+
+  def self.alpha
+    order(:flavor)
+  end
 end
