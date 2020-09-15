@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>TeaTimev4</title>
+    <title>TeaTime</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,6 +10,14 @@
   </head>
 
   <body>
+  <%= link_to "Add a New Tea Blend", new_tea_path%> |
+  <%= link_to "All Tea Blends", teas_path%> |
+  <%= link_to "Review a Tea Blend", new_review_path%> |
+  <%= link_to "All Reviews", reviews_path%> |
+
+
+
+
     <%= yield %>
   </body>
 </html>
