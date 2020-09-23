@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-  <head>
+  <head class= "bg-gray-800">
     <title>TeaTime</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -8,14 +8,15 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
-
-  <body>
-  | <%= link_to "All Brands", brands_path%> |
+      | <%= link_to "All Brands", brands_path%> |
   <%= link_to "Add a New Tea Blend", new_tea_path%> |
   <%= link_to "All Tea Blends", teas_path%> |
   <%= link_to "Review a Tea Blend", new_review_path%> |
   <%= link_to "All Reviews", reviews_path%> |
+  </head>
+
+  <body >
+
 
 
 
