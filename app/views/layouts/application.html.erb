@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-  <head class= "bg-gray-800">
+  <head>
     <title>TeaTime</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -8,16 +8,38 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-      | <%= link_to "All Brands", brands_path%> |
-  <%= link_to "Add a New Tea Blend", new_tea_path%> |
-  <%= link_to "All Tea Blends", teas_path%> |
-  <%= link_to "Review a Tea Blend", new_review_path%> |
-  <%= link_to "All Reviews", reviews_path%> |
+
+    <style>
+      #menu-toggle:checked + #menu {
+        display:block;
+      }
+    </style>
   </head>
 
-  <body >
+  <body class= "antialiased bg-gray-200">
+    <header class= "lg:px-16 px-6 bg-green-300 flex flex-wrap items-center lg:py-0 py-2">
+      <div class= "flex-1 flex justify-between items-center">
+        <label for="menu-toggle" class="cursor-pointer lg:hidden block"><svg class="fill-current text-gray-900"
+          xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><title>menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path></svg>       
+        </label>
+     </div>
+        <input type="checkbox" class="hidden" id= "menu-toggle" />
 
 
+          <div class="hidden lg:flex lg:items-center lg:w-auto w-full" id="menu">
+              <nav>
+                  <ul class= "lg:flex items-center justify-between text-base text-white-400 pt-4 lg:pt-0">
+                    <li><a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400"<%= link_to "All Brands", brands_path%> </a></li>
+                    <li><a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400" <%= link_to "Add a New Tea Blend", new_tea_path%> </a></li>
+                    <li><a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400" <%= link_to "All Tea Blends", teas_path%> </a></li>
+                    <li><a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400"<%= link_to "Review a Tea Blend", new_review_path%> </a></li>
+                    <li><a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400 lg:mb-0 mb-2" <%= link_to "All Reviews", reviews_path%></a></li>
+                  </ul>
+              </nav>
+
+          </div>
+      </div>
+   </header>
 
 
 
